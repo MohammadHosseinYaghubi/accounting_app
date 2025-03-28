@@ -1,0 +1,17 @@
+[
+    {
+        "description": "1",
+        "amount": 190000.0,
+        "type": "هزینه"
+    },
+    {
+        "description": "2",
+        "amount": 390000.0,
+        "type": "هزینه"
+    },
+    {
+        "description": "3",
+        "amount": 175000.0,
+        "type": "هزینه"
+    }
+]
