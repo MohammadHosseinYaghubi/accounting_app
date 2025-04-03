@@ -1,17 +1,12 @@
 [
     {
-        "description": "1",
-        "amount": 1000.0,
-        "type": "درآمد"
-    },
-    {
-        "description": "3",
-        "amount": 550.0,
-        "type": "درآمد"
-    },
-    {
-        "description": "4",
-        "amount": 900.0,
+        "description": "خرج ماهانه",
+        "amount": 15000000.0,
         "type": "هزینه"
+    },
+    {
+        "description": "حقوق",
+        "amount": 12000000.0,
+        "type": "درآمد"
     }
 ]
