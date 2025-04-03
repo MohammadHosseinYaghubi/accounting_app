@@ -40,7 +40,7 @@ class AccountingApp:
                 "edit_title": "ویرایش تراکنش",
                 "save_changes": "ذخیره تغییرات",
                 "no_file": "فایل داده‌ای یافت نشد!",
-                "design": "Design by: ©MHYaghoubi",
+                "design": " ©MH_Yaghoubi : طراحی شده توسط",
                 "language": "تغییر زبان"
             },
             "en": {
@@ -65,7 +65,7 @@ class AccountingApp:
                 "edit_title": "Edit Transaction",
                 "save_changes": "Save Changes",
                 "no_file": "No data file found!",
-                "design": "Designed by: ©MHYaghoubi",
+                "design": "Designed by: ©MH_Yaghoubi",
                 "language": "Change Language"
             }
         }
@@ -76,6 +76,9 @@ class AccountingApp:
     def setup_ui(self):
         self.root.title(self._("title"))
         self.set_window_geometry(600, 600)
+        # self.root.attributes('-fullscreen', True)  # حالت تمام صفحه
+        # # برای خروج از حالت تمام صفحه با کلید ESC
+        # self.root.bind('<Escape>', lambda e: self.root.attributes('-fullscreen', False))
         self.root.resizable(True, True)
         self.root.configure(bg="#1e1e2e")
 
@@ -118,8 +121,8 @@ class AccountingApp:
         self.add_button = ttk.Button(input_frame, text=self._("add"), command=self.add_transaction)
         self.add_button.grid(row=3, column=1, pady=10, sticky="e")
 
-        self.profit_button = ttk.Button(input_frame, text=self._("profit"), command=self.net_received)
-        self.profit_button.grid(row=3, column=3, pady=10, padx=5, sticky="e")
+        # self.profit_button = ttk.Button(input_frame, text=self._("profit"), command=self.net_received)
+        # self.profit_button.grid(row=3, column=3, pady=10, padx=5, sticky="e")
 
         # Treeview Frame
         tree_frame = ttk.Frame(self.root)
@@ -177,6 +180,7 @@ class AccountingApp:
         style.map('Treeview', background=[('selected', '#7f5af0')])
 
     def create_dropdown_menu(self, parent):
+        
         # If the previous menu exists, delete it.
         if hasattr(self, 'menubutton') and self.menubutton is not None:
             self.menubutton.destroy()
@@ -211,7 +215,7 @@ class AccountingApp:
             )
         self.menubutton["menu"] = self.menu
                
-         # Setting the menu direction for Windows operating system
+        # Setting the menu direction for Windows operating system
         if self.current_lang == "fa" and 'win' in sys.platform:
             try:
                 self.root.tk.call('tk', 'setPalette', 'menuBackground', '#1e1e2e')
@@ -221,7 +225,7 @@ class AccountingApp:
             except:
                 pass       
 
-    #Change language button
+    # Change language button
     def toggle_language(self):
         self.current_lang = "en" if self.current_lang == "fa" else "fa"
         self.update_text_direction()
@@ -248,7 +252,7 @@ class AccountingApp:
         self.create_dropdown_menu(menu_frame)
         self.create_input_widgets(input_frame)
                
-        # به‌روزرسانی لیبل سود/ضرر
+        # Update profit/loss label
         self.label_net.configure(anchor='e' if self.current_lang == "fa" else 'w')
         self.label_net.pack_configure(side='right' if self.current_lang == "fa" else 'left')
                 
@@ -256,14 +260,14 @@ class AccountingApp:
         self.create_input_widgets(input_frame)
                      
     def create_input_widgets(self, parent):
-        """ایجاد ویجت‌های ورودی با چیدمان مناسب برای هر زبان"""
+        """Create input widgets with appropriate layouts for each language."""
         # Delete previous widgets if they exist.
         for widget in parent.winfo_children():
             widget.destroy()
                
         # Creating labels and input fields
         self.description_label = ttk.Label(parent, text=self._("description"))
-        self.description_label.grid(row=0, column=0 if self.current_lang == "en" else "1", padx=5, pady=5, sticky="e" if self.current_lang == "en" else "w")
+        self.description_label.grid(row=0, column=0 if self.current_lang == "en" else "2", padx=5, pady=5, sticky="e" if self.current_lang == "en" else "w")
         
         self.description_entry = ttk.Entry(parent, width=30)
         self.description_entry.grid(row=0, column=1 if self.current_lang == "en" else "0", padx=5, pady=5)
@@ -286,8 +290,8 @@ class AccountingApp:
         self.add_button = ttk.Button(parent, text=self._("add"), command=self.add_transaction)
         self.add_button.grid(row=3, column=1 if self.current_lang == "en" else "0", pady=10, sticky="e" if self.current_lang == "fa" else "w")
 
-        self.profit_button = ttk.Button(parent, text=self._("profit"), command=self.net_received)
-        self.profit_button.grid(row=3, column=0 if self.current_lang == "en" else "1", pady=10, padx=5, sticky="w" if self.current_lang == "fa" else "e")
+        # self.profit_button = ttk.Button(parent, text=self._("profit"), command=self.net_received)
+        # self.profit_button.grid(row=3, column=0 if self.current_lang == "en" else "1", pady=10, padx=5, sticky="w" if self.current_lang == "fa" else "e")
 
     def update_all_texts(self):
         self.root.title(self._("title"))
@@ -299,7 +303,7 @@ class AccountingApp:
         
         # Update buttons
         self.add_button.config(text=self._("add"))
-        self.profit_button.config(text=self._("profit"))
+        # self.profit_button.config(text=self._("profit"))
         
         # Update combobox values
         self.type_combobox.config(values=[self._("income"), self._("expense")])
