@@ -76,10 +76,7 @@ class AccountingApp:
     def setup_ui(self):
         self.root.title(self._("title"))
         self.set_window_geometry(600, 600)
-        # self.root.attributes('-fullscreen', True)  # حالت تمام صفحه
-        # # برای خروج از حالت تمام صفحه با کلید ESC
-        # self.root.bind('<Escape>', lambda e: self.root.attributes('-fullscreen', False))
-        self.root.resizable(True, True)
+        self.root.resizable(0, 0)
         self.root.configure(bg="#1e1e2e")
 
         style = ttk.Style()
@@ -121,8 +118,8 @@ class AccountingApp:
         self.add_button = ttk.Button(input_frame, text=self._("add"), command=self.add_transaction)
         self.add_button.grid(row=3, column=1, pady=10, sticky="e")
 
-        # self.profit_button = ttk.Button(input_frame, text=self._("profit"), command=self.net_received)
-        # self.profit_button.grid(row=3, column=3, pady=10, padx=5, sticky="e")
+        self.profit_button = ttk.Button(input_frame, text=self._("profit"), command=self.net_received)
+        self.profit_button.grid(row=3, column=3, pady=10, padx=5, sticky="e")
 
         # Treeview Frame
         tree_frame = ttk.Frame(self.root)
@@ -267,31 +264,31 @@ class AccountingApp:
                
         # Creating labels and input fields
         self.description_label = ttk.Label(parent, text=self._("description"))
-        self.description_label.grid(row=0, column=0 if self.current_lang == "en" else "2", padx=5, pady=5, sticky="e" if self.current_lang == "en" else "w")
+        self.description_label.grid(row=0, column=0 if self.current_lang == "en" else 2, padx=5, pady=5, sticky="e" if self.current_lang == "en" else "w")
         
         self.description_entry = ttk.Entry(parent, width=30)
-        self.description_entry.grid(row=0, column=1 if self.current_lang == "en" else "0", padx=5, pady=5)
+        self.description_entry.grid(row=0, column=1 if self.current_lang == "en" else 1, padx=5, pady=5)
 
         self.amount_label = ttk.Label(parent, text=self._("amount"))
-        self.amount_label.grid(row=1, column=0 if self.current_lang == "en" else "1", padx=5, pady=5, sticky="e" if self.current_lang == "en" else "w")
+        self.amount_label.grid(row=1, column=0 if self.current_lang == "en" else 2, padx=5, pady=5, sticky="e" if self.current_lang == "en" else "w")
         
         self.amount_entry = ttk.Entry(parent, width=30)
-        self.amount_entry.grid(row=1, column=1 if self.current_lang == "en" else "0", padx=5, pady=5)
+        self.amount_entry.grid(row=1, column=1 if self.current_lang == "en" else 1, padx=5, pady=5)
 
         self.type_label = ttk.Label(parent, text=self._("type"))
-        self.type_label.grid(row=2, column=0 if self.current_lang == "en" else "1", padx=5, pady=5, sticky="e" if self.current_lang == "en" else "w")
+        self.type_label.grid(row=2, column=0 if self.current_lang == "en" else 2, padx=5, pady=5, sticky="e" if self.current_lang == "en" else "w")
         
         #============
         self.type_combobox = ttk.Combobox(parent, values=[self._("income"), self._("expense")], width=27)
-        self.type_combobox.grid(row=2, column=1 if self.current_lang == "en" else "0", padx=5, pady=5)
+        self.type_combobox.grid(row=2, column=1 if self.current_lang == "en" else 1, padx=5, pady=5)
         self.type_combobox.current(0)
         #============
 
         self.add_button = ttk.Button(parent, text=self._("add"), command=self.add_transaction)
-        self.add_button.grid(row=3, column=1 if self.current_lang == "en" else "0", pady=10, sticky="e" if self.current_lang == "fa" else "w")
+        self.add_button.grid(row=3, column=1 if self.current_lang == "en" else 1, pady=10, sticky="e" if self.current_lang == "fa" else "w")
 
-        # self.profit_button = ttk.Button(parent, text=self._("profit"), command=self.net_received)
-        # self.profit_button.grid(row=3, column=0 if self.current_lang == "en" else "1", pady=10, padx=5, sticky="w" if self.current_lang == "fa" else "e")
+        self.profit_button = ttk.Button(parent, text=self._("profit"), command=self.net_received)
+        self.profit_button.grid(row=3, column=0 if self.current_lang == "en" else 2, pady=10, padx=5, sticky="w" if self.current_lang == "en" else "e")
 
     def update_all_texts(self):
         self.root.title(self._("title"))
@@ -303,7 +300,7 @@ class AccountingApp:
         
         # Update buttons
         self.add_button.config(text=self._("add"))
-        # self.profit_button.config(text=self._("profit"))
+        self.profit_button.config(text=self._("profit"))
         
         # Update combobox values
         self.type_combobox.config(values=[self._("income"), self._("expense")])
@@ -355,7 +352,7 @@ class AccountingApp:
         self.description_entry.delete(0, tk.END)
         self.amount_entry.delete(0, tk.END)
         self.type_combobox.current(0)
-        self.net_received()
+       
         
     # Transaction information change function
     def edit_transaction(self):

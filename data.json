@@ -1,17 +1,17 @@
 [
     {
         "description": "1",
-        "amount": 190000.0,
-        "type": "هزینه"
-    },
-    {
-        "description": "2",
-        "amount": 390000.0,
-        "type": "هزینه"
+        "amount": 1000.0,
+        "type": "درآمد"
     },
     {
         "description": "3",
-        "amount": 175000.0,
+        "amount": 550.0,
+        "type": "درآمد"
+    },
+    {
+        "description": "4",
+        "amount": 900.0,
         "type": "هزینه"
     }
 ]
