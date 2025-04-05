@@ -17,8 +17,8 @@ A bilingual (English/Persian) desktop accounting application with a modern dark 
 
 ## Screenshots
 
-![English Interface](english.jpg)
-![Persian Interface](persian.jpg)
+![English Interface](english.JPG)
+![Persian Interface](persian.JPG)
 
 
 ### Prerequisites
