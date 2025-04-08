@@ -1,5 +1,8 @@
 # Accounting Software
 
+## Software Demo
+You can view the the demo of this software here: [Accounting Software video clip](https://drive.google.com/file/d/1sLsq0l-jz90Fw_DpwsOGy_QO4pbrKCPO/view?usp=drivesdk)
+
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
 ![Tkinter](https://img.shields.io/badge/GUI-Tkinter-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
